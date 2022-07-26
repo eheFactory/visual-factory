@@ -1,0 +1,25 @@
+{
+  "name": "visual-factory",
+  "version": "1.0.0",
+  "description": "reacj js based visualization tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx live-server --open=./build/index.html",
+    "dev": "npm run bundleconfig && npm start",
+    "bundlemanual": "rollup ./src/scripts/index.js -o build/bundle.js -f iife",
+    "bundleconfig": "rollup --config"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-eheperson:eheperson/visual-factory.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.3",
+    "live-server": "^1.2.2",
+    "rollup": "^2.77.1"
+  }
+}
