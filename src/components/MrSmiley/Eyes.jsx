@@ -1,4 +1,5 @@
-export const Eyes = (props) => {
+
+const Eyes = (props) => {
     return (
         <>
             <circle
@@ -14,3 +15,5 @@ export const Eyes = (props) => {
         </>
     )
 };
+
+export default Eyes;

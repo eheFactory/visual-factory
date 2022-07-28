@@ -1,0 +1,78 @@
+
+.nav{
+    /* border: 2px solid red; */
+    position: sticky;
+    top:0px;
+    display: flex;
+    width: 100%;
+    background: rgba(250, 248, 245, 0.5);
+    height: 70px;
+    box-shadow: 0px 2px 2px grey;
+    /* border-radius: 100px; */
+    z-index: 100;
+    align-content: center;
+    z-index: 1000 !important;
+    
+}
+
+.nav--logo{
+    /* border: 2px solid red; */
+    height: 60px;
+    margin-top: auto;
+    padding: 5px;
+    margin-left: 20px;
+
+}
+
+.nav--header{
+    /* border: 2px solid red; */
+    font-size: 40px;
+    font-family: 'Poiret One', cursive;
+    color: rgba(35, 95, 148, 1) !important;
+    margin-left: 53px;
+    font-weight: 900;
+    margin-top: auto;
+    padding: auto;
+    
+}
+
+.nav--menu{
+    /* border: 2px solid red; */
+    position: absolute;
+    right: 0px;
+    top : 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav--item{
+    /* border: 2px solid red; */
+    /* border-radius: 15px; */
+    /* background-color: tomato; */
+    font-family: 'Poiret One', cursive;
+    color: rgba(35, 95, 148, 1) !important;
+    list-style: none;
+    padding: 8px 10px;
+    margin: auto 10px;
+    float: left;
+    font-size: 25px;
+    color:white;
+    line-height: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline;
+}
+
+.nav--item:hover{
+    color: rgba(35, 95, 148, 1) !important;
+    border-bottom: 1px solid rgba(35, 95, 148, 1);
+    padding-bottom: 10px;
+    
+}
+
+.nav--item:active{
+    color: darkgreen;
+    border: 1px solid rgba(35, 95, 148, 1);
+    opacity: 0.5;
+
+}

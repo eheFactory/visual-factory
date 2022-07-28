@@ -1,7 +1,7 @@
 import { arc } from 'd3';
 
 
-export const Mouth = (props) => {
+const Mouth = (props) => {
     const mouthArc = arc()
         .innerRadius(props.mouthRadius)
         .outerRadius(props.mouthRadius + props.mouthWidth)
@@ -12,3 +12,5 @@ export const Mouth = (props) => {
         <path d={mouthArc()} />
     )
 };
+
+export default Mouth;

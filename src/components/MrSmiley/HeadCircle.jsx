@@ -1,10 +1,12 @@
-export const HeadCircle = (props) => {
+const HeadCircle = (props) => {
     return (
         <circle
             r={props.radius}
             fill={props.fill}
             stroke={props.stroke}
-            stroke-width={props.strokeWidth}
+            strokeWidth={props.strokeWidth}
         />
     )
 };
+
+export default HeadCircle;
