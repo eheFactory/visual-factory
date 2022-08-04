@@ -23,7 +23,7 @@ const NavBar = () => {
                     <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/fourier">MsFourier</Link>
                 </li>
                 <li className='nav--item'>
-                    <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/contact">Contact</Link>
+                    <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/visionlab">VisionLab</Link>
                 </li>
             </ul>
         </nav>

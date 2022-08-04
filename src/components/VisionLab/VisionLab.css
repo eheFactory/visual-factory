@@ -1,0 +1,33 @@
+.images-container {
+    border: 3px solid #fff;
+    padding: 20px;
+}
+
+.images-child {
+    width: 40%;
+    float: left;
+    border: 2px solid red;
+    margin-left: 2px;
+    /* display: flex; */
+    justify-content:center;
+}  
+
+.images-child.left {
+background-color: aqua;
+}  
+
+.images-child.right {
+background-color: bisque;
+}  
+
+.vision-lab-form{
+    width: 17%;
+    margin-left:2px;
+    border: 2px solid red;
+    float:left;
+}
+
+.images-child-title{
+    /* justify-content:center; */
+    width: 100%;
+}
