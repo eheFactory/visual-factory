@@ -1,5 +1,5 @@
 var N = 5000 // number of input samples
-var M = 1000 // number of circles
+var M = 8000 // number of circles
 var q = 5000 // number var N = 1600 // number of input samples
 
 var viewbox = {width: 1080};
@@ -35,7 +35,7 @@ let speed;
 
 
 async function setup(){
-    let svg = await fetch("https://gist.githubusercontent.com/eheperson/e24c5fbcf63d5a8eb04c17df394d177b/raw/5b8eeab9e9a8b6f2ef407c4073c13cd959853105/lenna-flat.svg")
+    let svg = await fetch("https://gist.githubusercontent.com/eheperson/5a2dc7ea9776bbb19ff8dcba178dc258/raw/bd97977a5f86be1b7e60cf3e6c25dd0594f4e22e/render.svg")
         .then(response => response.text())
         .then(text => (new DOMParser).parseFromString(text, "image/svg+xml"))
         .then(svg => svg.documentElement);
@@ -45,15 +45,15 @@ async function setup(){
 
     zoom = createSlider(5,50,1);
     speed = createSlider(1,10,1);
-    speed.position(1700, 820);
-    zoom.position(1700, 850);
+    speed.position(100, 820);
+    zoom.position(100, 850);
     viewbox = svg.viewBox.baseVal
 
     let path2 = svg.querySelector("path")
     l = path2.getTotalLength()
     P = Array.from({length: N}, (_, i) => {
         const {x, y} = path2.getPointAtLength(i / N * l);
-        return [x/10, -y/10];
+        return [x/5 - width/2 - 800, -y/5 + height/2 + 500];
     })
     console.log("P : ", P)
     console.log("l : ", l)
@@ -63,7 +63,7 @@ async function setup(){
 
     DFT = Array.from(K, k => {
         let x = [0, 0];
-        for (let i = 0, N = P.length; i < N; ++i) {
+        for (let i = 0; i < N; ++i) {
         x = add(x, mul(P[i], expim(k * i / N * 2 * -Math.PI)));
         }
         return [x[0] / N, x[1] / N];
