@@ -1,18 +1,20 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 // import './App.css';
 import AppRouter from "./components/AppRouter/AppRouter";
 import AppContext from "./appcontext";
-
 const App = () => {
-  const [originalImage, setOriginalImage] = useState(null);
-  const [resultImage, setResultImage] = useState(null);
+  const [vlOriginalImage, setVlOriginalImage] = useState(null);
+  const [vlResultImage, setVlResultImage] = useState(null);
+  const [vlEffects, setVlEffects] = useState([]);
 
   const contexStates = {
-    originalImage,
-    setOriginalImage,
-    resultImage,
-    setResultImage
+    vlOriginalImage,
+    setVlOriginalImage,
+    vlResultImage,
+    setVlResultImage,
+    vlEffects,
+    setVlEffects
   }
 
   return (
