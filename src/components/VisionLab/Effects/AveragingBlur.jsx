@@ -43,14 +43,16 @@ const AveragingBlur = () => {
             "imageBase64": vlOriginalImage,
             "kernelSize": value
         }
-        axios.post('http://0.0.0.0:8006/visionlab/averagingBlur/', data)
+        axios.post('http://127.0.0.1:5001/visionlab/filter/averagingBlur', data)
             .then(response => {
+                console.log(response.data)
                 setVlResultImage("data:image/jpg;base64," + response.data.resultImage)
             })
             .catch(error => {
                 console.log(error);
             });
     }
+
 
     return (
         <>

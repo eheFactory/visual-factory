@@ -43,7 +43,7 @@ const MedianBlur = () => {
             "imageBase64": vlOriginalImage,
             "kernelSize": value
         }
-        axios.post('http://0.0.0.0:8006/visionlab/medianBlur/', data)
+        axios.post('http://127.0.0.1:5001/visionlab/filter/medianBlur', data)
             .then(response => {
                 setVlResultImage("data:image/jpg;base64," + response.data.resultImage)
             })
