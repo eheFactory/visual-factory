@@ -1,4 +1,4 @@
-import React, { useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -9,9 +9,12 @@ import AppContext from '../../appcontext';
 import AveragingBlur from './Effects/AveragingBlur';
 import MedianBlur from './Effects/MedianBlur';
 import GaussianBlur from './Effects/GaussianBlur';
+import BilateralFilter from './Effects/BilateralFilter'
+import Dilation from './Effects/Dilation'
+import Erodion from './Effects/Erodion'
 
 const ControllerForm = () => {
-    const { vlEffects, setVlEffects, setVlOriginalImage} = useContext(AppContext);
+    const { vlEffects, setVlEffects, setVlOriginalImage } = useContext(AppContext);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
@@ -44,6 +47,18 @@ const ControllerForm = () => {
         };
         if (e.target.innerText == "Gaussian Blur") {
             const newEffects = [<GaussianBlur key={Math.random()} />, ...vlEffects];
+            setVlEffects(newEffects);
+        };
+        if (e.target.innerText == "Bilateral Filter") {
+            const newEffects = [<BilateralFilter key={Math.random()} />, ...vlEffects];
+            setVlEffects(newEffects);
+        };
+        if (e.target.innerText == "Dilation") {
+            const newEffects = [<Dilation key={Math.random()} />, ...vlEffects];
+            setVlEffects(newEffects);
+        };
+        if (e.target.innerText == "Erodion") {
+            const newEffects = [<Erodion key={Math.random()} />, ...vlEffects];
             setVlEffects(newEffects);
         };
         setAnchorEl(null);
@@ -87,17 +102,14 @@ const ControllerForm = () => {
                     <MenuItem value="averagingBlur" onClick={handleClose}>Averaging Blur</MenuItem>
                     <MenuItem onClick={handleClose}>Median Blur</MenuItem>
                     <MenuItem onClick={handleClose}>Gaussian Blur</MenuItem>
-                    <Divider />
-                    <MenuItem onClick={handleClose}>Erosion</MenuItem>
+                    <MenuItem onClick={handleClose}>Bilateral Filter</MenuItem>
                     <MenuItem onClick={handleClose}>Dilation</MenuItem>
+                    <MenuItem onClick={handleClose}>Erodion</MenuItem>
                     <Divider />
-                    <MenuItem onClick={handleClose}>Canny</MenuItem>
-                    <MenuItem onClick={handleClose}>Sobel</MenuItem>
                 </Menu>
             </Stack>
         </div>
     );
 };
-
 
 export default ControllerForm;

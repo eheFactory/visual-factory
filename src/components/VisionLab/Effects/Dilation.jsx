@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     }
 })
 
-const blurSliderValues = [
+const kernelRadiusSliderValues = [
     {
         "value": 1,
         "label": "1"
@@ -29,22 +29,65 @@ const blurSliderValues = [
     },
 ];
 
-const GaussianBlur = () => {
+const sigmaColorSLiderValues = [
+    {
+        "value": 1,
+        "label": "1"
+    },
+    {
+        "value": 25,
+        "label": "25"
+    },
+    {
+        "value": 51,
+        "label": "51"
+    },
+];
+
+const sigmaSpaceSliderValues = [
+    {
+        "value": 1,
+        "label": "1"
+    },
+    {
+        "value": 25,
+        "label": "25"
+    },
+    {
+        "value": 51,
+        "label": "51"
+    },
+];
+
+
+
+
+
+const AveragingBlur = () => {
     const classes = useStyles();
     const { vlOriginalImage, setVlOriginalImage, vlResultImage, setVlResultImage } = useContext(AppContext);
-    const [value, setValue] = useState(3);
+    const [value1, setValue1] = useState(3);
+    const [value2, setValue2] = useState(3);
+    const [value3, setValue3] = useState(3);
 
-    const handleChange = (e) => {
-        setValue(e.target.value);
+    const handleChangeVal1 = (e) => {
+        setValue1(e.target.value);
     };
 
+    const handleChangeVal2 = (e) => {
+        setValue2(e.target.value);
+    };
+
+    
     const handleChangeCommitted = (e) => {
         let data = {
             "imageBase64": vlOriginalImage,
-            "kernelSize": value
+            "kernelSize": value1,
+            "iterations": value2,
         }
-        axios.post('http://127.0.0.1:5001/visionlab/filter/gaussianBlur', data)
+        axios.post('http://127.0.0.1:5001/visionlab/filter/dilation', data)
             .then(response => {
+                console.log(response.data)
                 setVlResultImage("data:image/jpg;base64," + response.data.resultImage)
             })
             .catch(error => {
@@ -52,12 +95,15 @@ const GaussianBlur = () => {
             });
     }
 
+
+    // krad=10, sColor=35, sSpace=25,
     return (
         <>
+
             <div className={classes.formContainer}>
                 <Grid container>
                     <Grid item xs={12} sm={12} md={12}>
-                        <Typography variant='p' gutterBottom>Gaussian BLur</Typography>
+                        <Typography variant='p' gutterBottom>Dilation</Typography>
                     </Grid>
                     <Grid>
                         <hr />
@@ -74,15 +120,39 @@ const GaussianBlur = () => {
                                 max={51}
                                 // getAriaValueText={valuetext}
                                 step={2}
-                                marks={blurSliderValues}
+                                marks={kernelRadiusSliderValues}
                                 valueLabelDisplay="auto"
-                                onChange={handleChange}
+                                onChange={handleChangeVal1}
                                 onChangeCommitted={handleChangeCommitted}
                             />
                         </Grid>
                         <Grid item xs={1} sm={1} md={1}>
                             <Typography>
-                                {value}
+                                {value1}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                    <Grid container>
+                        <Grid item xs={3} sm={3} md={3}>
+                            <Typography variant='p' gutterBottom>Iterations</Typography>
+                        </Grid>
+                        <Grid item xs={8} sm={8} md={8}>
+                            <Slider
+                                aria-label="Always visible"
+                                defaultValue={15}
+                                min={1}
+                                max={51}
+                                // getAriaValueText={valuetext}
+                                step={2}
+                                marks={kernelRadiusSliderValues}
+                                valueLabelDisplay="auto"
+                                onChange={handleChangeVal2}
+                                onChangeCommitted={handleChangeCommitted}
+                            />
+                        </Grid>
+                        <Grid item xs={1} sm={1} md={1}>
+                            <Typography>
+                                {value2}
                             </Typography>
                         </Grid>
                     </Grid>
@@ -92,4 +162,4 @@ const GaussianBlur = () => {
     );
 };
 
-export default GaussianBlur;
+export default AveragingBlur;

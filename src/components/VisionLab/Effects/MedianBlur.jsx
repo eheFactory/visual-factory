@@ -55,30 +55,36 @@ const MedianBlur = () => {
     return (
         <>
             <div className={classes.formContainer}>
-
                 <Grid container>
+                    <Grid item xs={12} sm={12} md={12}>
+                        <Typography variant='p' gutterBottom>Median BLur</Typography>
+                    </Grid>
                     <Grid>
-                        <Typography variant='p' gutterBottom>median blur kernel size</Typography>
+                        <hr/>
                     </Grid>
-                    <Grid item xs={10} sm={10} md={10}>
-                        <Slider
-                            aria-label="Always visible"
-                            defaultValue={15}
-                            min={1}
-                            max={51}
-                            // getAriaValueText={valuetext}
-                            step={2}
-                            marks={blurSliderValues}
-                            valueLabelDisplay="auto"
-                            onChange={handleChange}
-                            onChangeCommitted={handleChangeCommitted}
-                        />
-                    </Grid>
-                    <Grid item>
-                        <Typography>
-
-                            {value}
-                        </Typography>
+                    <Grid container>
+                        <Grid item xs={3} sm={3} md={3}>
+                            <Typography variant='p' gutterBottom>Kernel Size</Typography>
+                        </Grid>
+                        <Grid item xs={8} sm={8} md={8}>
+                            <Slider
+                                aria-label="Always visible"
+                                defaultValue={15}
+                                min={1}
+                                max={51}
+                                // getAriaValueText={valuetext}
+                                step={2}
+                                marks={blurSliderValues}
+                                valueLabelDisplay="auto"
+                                onChange={handleChange}
+                                onChangeCommitted={handleChangeCommitted}
+                            />
+                        </Grid>
+                        <Grid item xs={1} sm={1} md={1}>
+                            <Typography>
+                                {value}
+                            </Typography>
+                        </Grid>
                     </Grid>
                 </Grid>
             </div>
